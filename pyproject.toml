@@ -1,0 +1,17 @@
+[project]
+name = "quantum-cube"
+version = "0.0.1"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "qiskit",
+    "qiskit-aer",
+    "numpy",
+    "pytest",
+    "rich"
+]
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
