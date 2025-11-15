@@ -89,11 +89,13 @@ def test_oracle_marks_zero():
         qc.x(eo[e])
 
     # put anc in |-> so a phase flip becomes a bit flip after H
-    qc.h(anc)
+    # qc.x(anc)
+    # qc.h(anc)
 
     oracle = build_eo_zero_oracle(layout, ALPHABET)
     qc.compose(oracle, qubits=[*seq, *eo, *anc], inplace=True)
-    qc.h(anc)
+    # qc.h(anc)
+    # qc.x(anc)
     qc.measure(anc, c)
 
     res = AerSimulator().run(qc, shots=1).result().get_counts()

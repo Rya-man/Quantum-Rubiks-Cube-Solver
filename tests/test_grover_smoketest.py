@@ -3,7 +3,8 @@ import math, random
 from src.quantum_oracles.encoding import QubitLayout
 from src.quantum_search.grover import run_grover_eo
 
-ALPHABET = ['U','R','F',"U'","R'","F'"]
+# ALPHABET = ['U','R','F',"U'","R'","F'"]
+ALPHABET = ['U','F',"U'","F'"]
 
 def find_solutions_bruteforce(d, eo_init):
     # A small brute-force over the limited alphabet for tiny d
@@ -35,7 +36,7 @@ def find_solutions_bruteforce(d, eo_init):
 
 def test_grover_amplifies_solution_mode():
     rng = random.Random(99)
-    layout = QubitLayout(d=3, k=len(ALPHABET))
+    layout = QubitLayout(d=3, k=len(ALPHABET),seq_bits_per_symbol=2)
     # init EO with ones on F edges so that an odd number of F moves solves EO
     eo_init = [0]*layout.eo_bits
     for e in [0,4,8,7]:

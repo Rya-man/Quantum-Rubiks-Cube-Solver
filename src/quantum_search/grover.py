@@ -30,7 +30,8 @@ def run_grover_eo(layout: QubitLayout, alphabet: List[str], eo_bits_init: List[i
         if b % 2 == 1:
             qc.x(eo[i])
 
-    # anc in |-> for phase kickback
+    # anc in |−> for phase kickback: |0> --X--> |1> --H--> |−>
+    qc.x(anc)
     qc.h(anc)
 
     oracle = build_eo_zero_oracle(layout, alphabet)
